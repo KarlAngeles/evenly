@@ -1,0 +1,14 @@
+FROM node:18.17.0-alpine
+
+ENV APP_PATH /var/app
+ENV NEXT_PORT 8000
+
+WORKDIR $APP_PATH
+
+COPY frontend/package.json frontend/package-lock.json ./
+RUN npm install
+
+COPY . ./
+
+EXPOSE $NEXT_PORT
+CMD ["npm", "run", "dev"]
