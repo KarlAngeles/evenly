@@ -21,6 +21,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile.development
     image: evenly-backend-local
+    container_name: evenly-backend
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     volumes:
       - .:/var/app:cached
@@ -42,6 +43,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile.development
     image: evenly-frontend-local
+    container_name: evenly-frontend
     volumes:
       - ./frontend:/var/app:cached
       - node_modules:/var/app/node_modules

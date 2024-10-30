@@ -12,4 +12,4 @@ stop:
 	docker-compose -f docker-compose-development.yml down
 
 console:
-	docker exec -it evenly-backend-local bash
+	docker exec -it evenly-backend bash
