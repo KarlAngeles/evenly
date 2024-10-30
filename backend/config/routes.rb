@@ -1,10 +1,26 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root to: proc { [404, {}, ["Not found."]] }
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  scope format: :json do
+    mount_devise_token_auth_for 'User', at: '/api/v1/auth'
+  end
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+  namespace :api do
+    namespace :v1, defaults: { format: :json } do
+      resources :users do
+        member do
+          get :bills
+          get :debts
+          get :amount_owed
+          get :amount_receivable
+        end
+      end
+      resources :bills
+      resources :user_debts do
+        collection do
+          post :settle
+        end
+      end
+    end
+  end
 end
