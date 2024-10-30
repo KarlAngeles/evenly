@@ -13,4 +13,20 @@ $ make start
 Starts the prerequisite containers.
 
 #### 3. Access the Evenly app
-:tada: Evenly should now be accessible at <http://localhost:8000>.
+:tada: Evenly should now be accessible at:
+```bash
+Frontend: <http://localhost:8000>
+Backend: <http://localhost:3000>
+```
+
+### Features
+- Authentication
+- Bill Creation
+- Bill and Debt Tracking
+- Debt Settlement
+
+### To Do
+- Refactor session handling
+- Full transition to TS
+- Transactions page and datatable
+- Friends feature so that adding participants isn't global
